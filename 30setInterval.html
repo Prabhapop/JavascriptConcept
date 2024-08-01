@@ -1,0 +1,37 @@
+<!-- Write a javascript code to implement the quort changing feature -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quort Change</title>
+  </head>
+  <body>
+    <h1>Motivational Quorts</h1>
+    <div id="quortDisplay">Loading...</div>
+    <script>
+      const quotes = [
+        "Either you run the day or the day runs you",
+        "Women challenge the status quo because we are never it",
+        "When a woman becomes her own best friend, life is easier",
+        "He who conquers himself is the mightiest warrior",
+        "One man with courage makes a majority.",
+        "The successful man will profit from his mistakes and try again in a different way",
+        "Work until your bank account looks like a phone number",
+        "Alone we can do so little, together we can do so much",
+      ];
+      function displayRandomQuorts() {
+        const quortDisplay = document.getElementById("quortDisplay");
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        quortDisplay.textContent = quotes[randomIndex];
+      }
+      displayRandomQuorts();
+
+      function changeQuortPeriodically() {
+        displayRandomQuorts();
+        setTimeout(changeQuortPeriodically, 5000);
+      }
+      changeQuortPeriodically();
+    </script>
+  </body>
+</html>

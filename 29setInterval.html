@@ -1,0 +1,42 @@
+<!-- SET INTERVAL: You are tasked with creating a countdown timer using Javascript
+ and the setInterval function. the countdown timer should start at 1 minute(60 s)
+ and update every second until it reached 00:00 when the countdown reaches zero, an alert
+ should pop up to notify that the countdown in completed -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SET INTERVAL</title>
+  </head>
+  <body>
+    <h1>CountDown Timer</h1>
+    <div id="timer">--:--</div>
+
+    <script>
+      const timerElement = document.getElementById("timer");
+      let countDownSecond = 60;
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(countDownSecond / 60);
+        const seconds = countDownSecond % 60;
+        const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")}`;
+        timerElement.textContent = formattedTime;
+      }
+      function countdown() {
+        if (countDownSecond > 0) {
+          countDownSecond--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          alert(`Countdown Completed`);
+        }
+      }
+      updateTimerDisplay();
+      const timerInterval = setInterval(countdown, 1000);
+    </script>
+  </body>
+</html>
